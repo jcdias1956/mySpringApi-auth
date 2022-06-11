@@ -1,4 +1,4 @@
-package com.algaworks.algafood.auth;
+package com.algaworks.algafood.auth.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,18 +14,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.withUser("jose.dias")
-				.password(passwordEncoder().encode("123"))
-				.roles("ADMIN")
-				
-			.and()
-			.withUser("joao")
-				.password(passwordEncoder().encode("123"))
-				.roles("ADMIN");
-	}
+//	// para usuario fixo
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.inMemoryAuthentication()
+//			.withUser("jose.dias")
+//				.password(passwordEncoder().encode("123"))
+//				.roles("ADMIN")
+//				
+//			.and()
+//			.withUser("joao")
+//				.password(passwordEncoder().encode("123"))
+//				.roles("ADMIN");
+//	}
+	
+	
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -38,9 +41,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 	
-	@Bean
-	@Override
-	protected UserDetailsService userDetailsService() {
-		return super.userDetailsService();
-	}
+//	// comentando porque foi criada uma class que gera um JpaUserDetailsService
+//	@Bean
+//	@Override
+//	protected UserDetailsService userDetailsService() {
+//		return super.userDetailsService();
+//	}
 }
